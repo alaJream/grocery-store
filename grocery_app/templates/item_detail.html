@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Item - {{ item.name }}</h1>
+
+<p><img src="{{ item.photo_url }}" width="250px" height="250px"></p>
+
+<p><strong>Price:</strong> {{ item.price }}</p>
+
+<p><strong>Category:</strong> {{ item.category }}</p>
+
+<p><strong>Store:</strong> {{ item.store.title }}</p>
+
+<p><strong>Created Username:</strong>{{ item.created_by.username }}</p>
+
+<a href="/add_to_shopping_list/{{ item.id }}"><button>Add {{item.name}} To Shopping List</button></a>
+
+
+<h2>Edit Item</h2>
+
+<form method="POST">
+    <fieldset>
+        <legend>Please enter your information:</legend>
+        {{ form.csrf_token }}
+        {{ form.name.label}}
+        {{ form.name(placeholder='Tomato') }}
+        {{ form.price.label }}
+        {{ form.price(placeholder='$1.25') }}
+        {{ form.category.label }}
+        {{ form.category }}
+        {{ form.photo_url.label }}
+        {{ form.photo_url(placeholder='Photo URL Here')}}
+        {{ form.store.label }}
+        {{ form.store }}
+        {{ form.submit }}
+    </fieldset>
+</form>
+
+{% endblock %}

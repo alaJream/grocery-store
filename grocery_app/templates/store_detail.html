@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Store - {{ store.title }}</h1>
+
+<strong>Address:</strong> {{ store.address }}
+
+<h2>Items</h2>
+
+<div class="items">
+    {% for item in store.items %}
+    <div class="item-details">
+        <a href="/item/{{ item.id }}"><img src="{{ item.photo_url }}" alt="{{ item.name }}" width="200px">
+        <p><strong>{{ item.name }}</strong></p></a>
+        <p><strong>Price: ${{ item.price }}</strong></p>
+    </div>
+    {% endfor %}
+</div>
+
+
+<h2>Edit Store</h2>
+
+<form method="POST">
+    <fieldset>
+        <legend>Please enter your information:</legend>
+        {{ form.csrf_token }}
+        {{ form.title.label}}
+        {{ form.title(placeholder='ex: Target') }}
+        {{ form.address.label }}
+        {{ form.address }}
+        {{ form.submit }}
+    </fieldset>
+</form>
+
+{% endblock %}

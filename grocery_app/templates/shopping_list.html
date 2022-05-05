@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>{{ current_user.username }}'s Shopping List</h1>
+
+{% for item in shopping_list %}
+<div id="for-list">
+<h1>Item - {{ item.name }}</h1>
+<p><img src="{{ item.photo_url }}" width="250px" height="250px"></p>
+
+<p><strong>Price:</strong> {{ item.price }}</p>
+
+<p><strong>Category:</strong> {{ item.category }}</p>
+
+<p><strong>Store:</strong> {{ item.store.title }}</p>
+</div>
+{% endfor %}
+{% endblock %}

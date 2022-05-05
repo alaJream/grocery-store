@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>New Item</h1>
+
+<form method="POST">
+    <fieldset>
+        <legend>Please enter your information:</legend>
+        {{ form.csrf_token }}
+        {{ form.name.label}}
+        {{ form.name(placeholder='Tomato') }}
+        {{ form.price.label }}
+        {{ form.price(placeholder='$1.25') }}
+        {{ form.category.label }}
+        {{ form.category }}
+        {{ form.photo_url.label }}
+        {{ form.photo_url(placeholder='Photo URL Here')}}
+        {{ form.store.label }}
+        {{ form.store }}
+        {{ form.submit }}
+    </fieldset>
+</form>
+
+
+{% endblock %}
